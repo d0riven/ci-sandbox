@@ -10,13 +10,15 @@ jobs:
 
 workflows:
   version: 2
-    show-main-hash:
+  show-main-hash:
+    jobs:
       - show-hash:
           filters:
             branches:
               only:
                 - main
-    show-un-main-hash:
+  show-un-main-hash:
+    jobs:
       - show-hash:
           filters:
             branches:

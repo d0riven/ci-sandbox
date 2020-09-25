@@ -5,7 +5,6 @@ jobs:
       - image: circleci/golang:1.15
     steps:
       - checkout
-      - run: echo "hello circleci"
       - run: git rev-parse HEAD
 
 workflows:

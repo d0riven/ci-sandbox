@@ -1,9 +1,24 @@
 version: 2.1
 jobs:
-  build:
+  show-hash:
     docker:
       - image: circleci/go:1.5
     steps:
       - checkout
       - run: echo "hello circleci"
       - run: git rev-parse HEAD
+
+workflows:
+  version: 2
+    show-main-hash:
+      - show-hash:
+          filters:
+            branches:
+              only:
+                - main
+    show-un-main-hash:
+      - show-hash:
+          filters:
+            branches:
+              ignore:
+                - main

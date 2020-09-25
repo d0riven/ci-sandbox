@@ -5,4 +5,5 @@ jobs:
       - image: circleci/go:1.5
     steps:
       - checkout
-      - run: echo "hello world"
+      - run: echo "hello circleci"
+      - run: git rev-parse HEAD

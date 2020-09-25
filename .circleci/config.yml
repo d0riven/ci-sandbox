@@ -1,0 +1,26 @@
+version: 2.1
+jobs:
+  show-hash:
+    docker:
+      - image: circleci/golang:1.15
+    steps:
+      - checkout
+      - run: echo "hello circleci"
+      - run: git rev-parse HEAD
+
+workflows:
+  version: 2
+  show-main-hash:
+    jobs:
+      - show-hash:
+          filters:
+            branches:
+              only:
+                - main
+  show-un-main-hash:
+    jobs:
+      - show-hash:
+          filters:
+            branches:
+              ignore:
+                - main
